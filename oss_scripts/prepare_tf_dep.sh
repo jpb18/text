@@ -31,7 +31,7 @@ fi
 commit_sha=$(curl -SsL https://github.com/tensorflow/tensorflow/commit/${short_commit_sha} | grep "Browse the repository" | sed -e 's/.*\([a-f0-9]\{40\}\).*/\1/')
 
 # Update TF dependency to installed tensorflow
-sed -E -i $ext "s/strip_prefix = \"tensorflow-2.+\",/strip_prefix = \"tensorflow-${commit_sha}\",/" WORKSPACE
-sed -E -i $ext "s|\"https://github.com/tensorflow/tensorflow/archive/v.+\.zip\"|\"https://github.com/tensorflow/tensorflow/archive/${commit_sha}.zip\"|" WORKSPACE
-prev_shasum=$(grep -A 1 -e "strip_prefix.*tensorflow-" WORKSPACE | tail -1 | awk -F '"' '{print $2}')
-sed -i $ext "s/sha256 = \"${prev_shasum}\",//" WORKSPACE
+#sed -E -i $ext "s/strip_prefix = \"tensorflow-2.+\",/strip_prefix = \"tensorflow-${commit_sha}\",/" WORKSPACE
+#sed -E -i $ext "s|\"https://github.com/tensorflow/tensorflow/archive/v.+\.zip\"|\"https://github.com/tensorflow/tensorflow/archive/${commit_sha}.zip\"|" WORKSPACE
+#prev_shasum=$(grep -A 1 -e "strip_prefix.*tensorflow-" WORKSPACE | tail -1 | awk -F '"' '{print $2}')
+#sed -i $ext "s/sha256 = \"${prev_shasum}\",//" WORKSPACE
