@@ -30,5 +30,5 @@ if [[ $osname != "darwin" ]] || [[ ! $(sysctl -n machdep.cpu.brand_string) =~ "A
 fi
 
 # Build the pip package.
-bazel build --enable_runfiles oss_scripts/pip_package:build_pip_package
+bazel build -j 4 --enable_runfiles oss_scripts/pip_package:build_pip_package
 ./bazel-bin/oss_scripts/pip_package/build_pip_package .
